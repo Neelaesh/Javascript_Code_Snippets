@@ -104,11 +104,15 @@ console.log(count); // { apple: 3, banana: 2, orange: 1 }
 
 /* ------------------------------------------------------------------------------------------------------ */
 
-(function() {
-    console.log(1); 
-    setTimeout(function(){console.log(2)}, 1000); 
-    setTimeout(function(){console.log(3)}, 0); 
-    console.log(4);
+(function () {
+  console.log(1);
+  setTimeout(function () {
+    console.log(2);
+  }, 1000);
+  setTimeout(function () {
+    console.log(3);
+  }, 0);
+  console.log(4);
 })();
 
 // 1
@@ -118,17 +122,18 @@ console.log(count); // { apple: 3, banana: 2, orange: 1 }
 
 /* ------------------------------------------------------------------------------------------------------ */
 
-const length = 4;  
+const length = 4;
 const num = [];
-for (var i = 0; i < length; i++);{
+for (var i = 0; i < length; i++);
+{
   num.push(i + 1);
 }
 console.log(num); // 5 because ; exists after for loop
 
 /* ------------------------------------------------------------------------------------------------------ */
 
-function foo() {    
-  let a = b = 0;
+function foo() {
+  let a = (b = 0);
   a++;
   return a;
 }
@@ -137,5 +142,3 @@ console.log(typeof a); // undefined as a is of block scope (let)
 console.log(typeof b); // number as b is attached to window obj as it is not declared with let/const and var
 
 /* ------------------------------------------------------------------------------------------------------ */
-
-
