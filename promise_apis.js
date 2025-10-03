@@ -1,9 +1,9 @@
 const p1 = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve("P1 Success"), 3000);
+  setTimeout(() => reject("P1 Success"), 3000);
 });
 
 const p2 = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve("P2 Success"), 1000);
+  setTimeout(() => reject("P2 Success"), 1000);
 });
 
 const p3 = new Promise(function (resolve, reject) {
@@ -19,6 +19,8 @@ Promise.all([p1, p2, p3])
     console.error("Promise.all ", error); // "P3 Failed"
   });
 
+/* ------------------------------------------------------------------------------------------------------ */
+
 // Promise.allSettled example
 Promise.allSettled([p1, p2, p3])
   .then(function (results) {
@@ -27,6 +29,8 @@ Promise.allSettled([p1, p2, p3])
   .catch(function (error) {
     console.error("Promise.allSettled ", error);
   });
+
+/* ------------------------------------------------------------------------------------------------------ */
 
 // Promise.race example
 Promise.race([p1, p2, p3])
@@ -37,6 +41,8 @@ Promise.race([p1, p2, p3])
     console.error("Promise.race ", error);
   });
 
+/* ------------------------------------------------------------------------------------------------------ */
+
 // Promise.any example
 Promise.any([p1, p2, p3])
   .then(function (result) {
@@ -45,3 +51,5 @@ Promise.any([p1, p2, p3])
   .catch(function (error) {
     console.error("Promise.any ", error);
   });
+
+/* ------------------------------------------------------------------------------------------------------ */
