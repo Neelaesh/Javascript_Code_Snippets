@@ -137,6 +137,13 @@ console.log({} + []); // [object Object] + '' results in '[object Object]'
 console.log([] + {}); // '' + [object Object] results in '[object Object]'
 console.log({} + {}); // [object Object] + [object Object] results in [object Object][object Object]
 console.log([] == ![]); // true because [] is converted to '' and ![] is false, so '' == false which is true after type coercion
+// ! - converts the operand to boolean and negates it
+// [] - is an object which is truthy, so ![] is false
+// Abstract Equality Comparison Algorithm steps: [] == false
+// 1. If one side is boolean, convert it to number: [] == 0
+// 2. If one side is object, convert it to primitive. Arrays are converted to strings via toString(): '' == 0
+// 3. If one side is string and other is number, convert string to number: 0 == 0
+// 4. Now both sides are number, compare them: true
 
 /* ------------------------------------------------------------------------------------------------------ */
 
@@ -159,3 +166,9 @@ console.log("5" % 2); // 5 % 2 = 1 because one of the operand is not string and 
 console.log(null + null); // 0 + 0 = 0 because the operands are not string, so they are converted to numbers
 console.log(undefined + undefined); // NaN + NaN = NaN because undefined is converted to NaN in numeric context
 console.log(null + undefined); // 0 + NaN = NaN because undefined is converted to NaN in numeric context
+console.log(null == undefined); // true because in Abstract Equality Comparison Algorithm, null and undefined are considered equal as they represent no value
+console.log(null === undefined); // false because they are of different types
+console.log(typeof null); // object due to a historical bug in JavaScript
+console.log(typeof undefined); // undefined
+
+/* ------------------------------------------------------------------------------------------------------ */
